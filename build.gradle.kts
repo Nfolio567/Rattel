@@ -17,7 +17,7 @@ val junitVersion = "5.12.1"
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
+    languageVersion = JavaLanguageVersion.of(23)
   }
 }
 
@@ -31,15 +31,15 @@ application {
 }
 
 javafx {
-  version = "21.0.6"
+  version = "23.0.2"
   modules = listOf("javafx.controls", "javafx.fxml")
 }
 
 dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-  // https://mvnrepository.com/artifact/com.alphacephei/vosk
-  implementation("com.alphacephei:vosk:0.3.45")
+  // https://mvnrepository.com/artifact/org.tensorflow/tensorflow-lite
+  //runtimeOnly("org.tensorflow:tensorflow-lite:2.17.0")
 }
 
 tasks.withType<Test> {

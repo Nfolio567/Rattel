@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="superRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="one.nfolio.rattel.HelloController">
    <children>
-      <Text layoutX="24.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;GN-KMBFont-UB-OldstyleKana&quot;;" text="ラッテル" wrappingWidth="1240.2443237304688">
-         <font>
-            <Font size="300.0" />
-         </font>
-      </Text>
+      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #9945ce;">
+         <children>
+            <ImageView fx:id="backgroundCard1" fitHeight="573.0" fitWidth="430.0" layoutX="45.0" layoutY="45.0" pickOnBounds="true" rotate="-10.0" />
+            <ImageView fx:id="backgroundCard2" fitHeight="573.0" fitWidth="430.0" layoutX="300.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" rotate="-5.0" />
+            <ImageView fx:id="backgroundCard3" fitHeight="573.0" fitWidth="430.0" layoutX="600.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" rotate="5.0" />
+            <ImageView fx:id="backgroundCard4" fitHeight="573.0" fitWidth="430.0" layoutX="815.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" rotate="10.0" />
+            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;GN-KMBFont-UB-OldstyleKana&quot;;" text="ラッテル" wrappingWidth="1200.7057037353516" AnchorPane.topAnchor="100.0">
+               <font>
+                  <Font size="300.0" />
+               </font>
+            </Text>
+            <Button layoutX="502.0" layoutY="519.0" mnemonicParsing="false" onAction="#onStartRecording" prefHeight="123.0" prefWidth="293.0" text="録音" textAlignment="CENTER" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="502.0" AnchorPane.rightAnchor="485.0" AnchorPane.topAnchor="519.0">
+               <font>
+                  <Font size="70.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</Pane>
