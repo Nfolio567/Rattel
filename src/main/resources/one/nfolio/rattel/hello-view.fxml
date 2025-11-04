@@ -9,7 +9,7 @@
 
 <Pane fx:id="superRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="one.nfolio.controller.HelloController">
    <children>
-      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #fff;" styleClass="body">
+      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="body">
          <children>
             <ImageView fx:id="backgroundCard0" fitHeight="573.0" fitWidth="430.0" layoutY="68.0" pickOnBounds="true" rotate="-15.0" AnchorPane.leftAnchor="70.0" />
             <ImageView fx:id="backgroundCard1" fitHeight="573.0" fitWidth="430.0" layoutX="303.86622869" pickOnBounds="true" preserveRatio="true" rotate="-7.5" AnchorPane.topAnchor="30.0" />

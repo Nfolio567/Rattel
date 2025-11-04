@@ -1,11 +1,15 @@
 .root {
-  -fx-background-image: url("img/sand.png");
+  -fx-background-image: url("img/grass.png");
   -fx-background-repeat: repeat repeat;
   -fx-background-size: auto;
   -fx-background-position: 0 0;
 }
 
 .body {
-  -fx-border-radius: 20px;
+  -fx-background-image: url("img/sand.png");
+  -fx-background-repeat: repeat repeat;
+  -fx-background-size: auto;
+  -fx-background-position: 0 0;
   -fx-background-radius: 20px;
+  -fx-border-radius: 20px;
 }
