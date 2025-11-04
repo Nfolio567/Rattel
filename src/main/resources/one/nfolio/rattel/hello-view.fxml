@@ -7,24 +7,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="superRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="one.nfolio.rattel.HelloController">
+<Pane fx:id="superRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="one.nfolio.controller.HelloController">
    <children>
-      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #9945ce;">
+      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #fff;" styleClass="body">
          <children>
-            <ImageView fx:id="backgroundCard1" fitHeight="573.0" fitWidth="430.0" layoutX="45.0" layoutY="45.0" pickOnBounds="true" rotate="-10.0" />
-            <ImageView fx:id="backgroundCard2" fitHeight="573.0" fitWidth="430.0" layoutX="300.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" rotate="-5.0" />
-            <ImageView fx:id="backgroundCard3" fitHeight="573.0" fitWidth="430.0" layoutX="600.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" rotate="5.0" />
-            <ImageView fx:id="backgroundCard4" fitHeight="573.0" fitWidth="430.0" layoutX="815.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" rotate="10.0" />
-            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;GN-KMBFont-UB-OldstyleKana&quot;;" text="ラッテル" wrappingWidth="1200.7057037353516" AnchorPane.topAnchor="100.0">
+            <ImageView fx:id="backgroundCard0" fitHeight="573.0" fitWidth="430.0" layoutY="68.0" pickOnBounds="true" rotate="-15.0" AnchorPane.leftAnchor="70.0" />
+            <ImageView fx:id="backgroundCard1" fitHeight="573.0" fitWidth="430.0" layoutX="303.86622869" pickOnBounds="true" preserveRatio="true" rotate="-7.5" AnchorPane.topAnchor="30.0" />
+            <ImageView fx:id="backgroundCard2" fitHeight="573.0" fitWidth="430.0" layoutX="530.96501374" pickOnBounds="true" preserveRatio="true" rotate="7.5" AnchorPane.topAnchor="30.0" />
+            <ImageView fx:id="backgroundCard3" fitHeight="573.0" fitWidth="430.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" rotate="15.0" AnchorPane.rightAnchor="70.0" />
+            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="ラッテル" wrappingWidth="1200.7057037353516" AnchorPane.topAnchor="100.0">
                <font>
                   <Font size="300.0" />
                </font>
             </Text>
-            <Button layoutX="502.0" layoutY="519.0" mnemonicParsing="false" onAction="#onStartRecording" prefHeight="123.0" prefWidth="293.0" text="録音" textAlignment="CENTER" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="502.0" AnchorPane.rightAnchor="485.0" AnchorPane.topAnchor="519.0">
-               <font>
-                  <Font size="70.0" />
-               </font>
-            </Button>
+            <Button fx:id="startButton" layoutX="438.0" layoutY="453.0" mnemonicParsing="false" onAction="#onStartRecording" prefHeight="115.0" prefWidth="324.0" text="始める" textAlignment="CENTER" AnchorPane.topAnchor="453.0" />
+            <Button fx:id="settingButton" layoutX="438.0" layoutY="588.0" mnemonicParsing="false" onAction="#goSetting" prefHeight="115.0" prefWidth="324.0" text="設定" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </children>

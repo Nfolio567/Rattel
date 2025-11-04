@@ -1,9 +1,9 @@
 plugins {
   java
   application
-  id("org.javamodularity.moduleplugin") version "1.8.15"
-  id("org.openjfx.javafxplugin") version "0.0.13"
-  id("org.beryx.jlink") version "2.25.0"
+  id("org.javamodularity.moduleplugin") version "2.0.0"
+  id("org.openjfx.javafxplugin") version "0.1.0"
+  id("org.beryx.jlink") version "3.1.4-rc"
 }
 
 group = "one.nfolio"
@@ -17,7 +17,7 @@ val junitVersion = "5.12.1"
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(23)
+    languageVersion = JavaLanguageVersion.of(25)
   }
 }
 
@@ -28,11 +28,15 @@ tasks.withType<JavaCompile> {
 application {
   mainModule.set("one.nfolio.rattel")
   mainClass.set("one.nfolio.rattel.HelloApplication")
+  applicationDefaultJvmArgs = listOf(
+    "--enable-native-access=javafx.graphics",
+    "--enable-native-access=javafx.media"
+  )
 }
 
 javafx {
-  version = "23.0.2"
-  modules = listOf("javafx.controls", "javafx.fxml")
+  version = "25.0.1"
+  modules = listOf("javafx.controls", "javafx.fxml", "javafx.media")
 }
 
 dependencies {
@@ -40,6 +44,7 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
   // https://mvnrepository.com/artifact/org.tensorflow/tensorflow-lite
   //runtimeOnly("org.tensorflow:tensorflow-lite:2.17.0")
+  implementation("org.openjfx:javafx-media:25.0.1")
 }
 
 tasks.withType<Test> {
