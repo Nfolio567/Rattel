@@ -17,7 +17,13 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import one.nfolio.rattel.HelloApplication;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
@@ -53,7 +59,7 @@ public class HelloController {
   private ImageView backgroundCard3;
 
   @FXML
-  public void initialize() throws URISyntaxException {
+  public void initialize() throws URISyntaxException, LineUnavailableException, UnsupportedAudioFileException, IOException {
     title.setStyle("-fx-font-family:  \"GN-KMBFont-UB-OldstyleKana\";");
     startButton.setStyle("-fx-font-family: \"Shippori Gothic B2 Bold\"; -fx-font-size: 70px;");
     settingButton.setStyle("-fx-font-family: \"Shippori Gothic B2 Bold\"; -fx-font-size: 70px");
@@ -112,12 +118,19 @@ public class HelloController {
       stage.setMinWidth(newValue.getWidth());
     });
 
-    Media media = new Media(getClass().getResource("/media/bgm.mp3").toURI().toString());
+
+    Clip clip = AudioSystem.getClip();
+    InputStream rawBGM = Objects.requireNonNull(getClass().getResourceAsStream("/media/bgm.wav"));
+    clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(rawBGM)));
+    clip.loop(Clip.LOOP_CONTINUOUSLY);
+    clip.start();
+
+    /*Media media = new Media(getClass().getResource("/media/bgm.wav").toURI().toString());
     player = new MediaPlayer(media);
     player.setCycleCount(MediaPlayer.INDEFINITE);
     player.play();
     player.setOnEndOfMedia(() -> System.out.println("media complete"));
-    player.setOnError(() -> player.getError().printStackTrace());
+    player.setOnError(() -> player.getError().printStackTrace());*/
   }
 
   @FXML
