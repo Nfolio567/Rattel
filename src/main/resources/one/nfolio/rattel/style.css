@@ -1,4 +1,8 @@
-.root {
+* {
+  -fx-font-family: "Shippori Gothic B2";
+}
+
+.superRoot {
   -fx-background-image: url("img/grass.png");
   -fx-background-repeat: repeat repeat;
   -fx-background-size: auto;

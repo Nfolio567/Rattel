@@ -2,5 +2,10 @@
   "font": {
     "size": 16,
     "family": "\"Shippori Gothic B2 Bold\" \"Manrope SemiBold\""
+  },
+  "sound": {
+    "bgm-volume": 1,
+    "mic-volume": 1,
+    "mute": false
   }
 }
