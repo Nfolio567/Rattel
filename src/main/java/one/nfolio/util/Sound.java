@@ -4,21 +4,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Sound {
   @JsonProperty("bgm-volume")
-  private float bgmVolume;
+  private double bgmVolume;
 
   @JsonProperty("mic-volume")
-  private float micVolume;
+  private double micVolume;
 
   @JsonProperty("mute")
   private boolean mute;
 
   public Sound() {}
 
-  public void setBgmVolume(float bgmVolume) {
+  public void setBgmVolume(double bgmVolume) {
     this.bgmVolume = bgmVolume;
   }
 
-  public void setMicVolume(float micVolume) {
+  public void setMicVolume(double micVolume) {
     this.micVolume = micVolume;
   }
 
@@ -26,11 +26,11 @@ public class Sound {
     this.mute = mute;
   }
 
-  public float getBgmVolume() {
+  public double getBgmVolume() {
     return bgmVolume;
   }
 
-  public float getMicVolume() {
+  public double getMicVolume() {
     return micVolume;
   }
 

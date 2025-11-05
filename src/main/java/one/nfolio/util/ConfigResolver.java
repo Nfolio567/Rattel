@@ -41,12 +41,13 @@ public class ConfigResolver {
   }
 
   public static float getGain() throws IOException {
-    getConfigPath();
+    configPath = getConfigPath();
+    System.out.println(configPath);
     ObjectMapper mapper = new ObjectMapper();
     Setting setting = mapper.readValue(new File(
-            Paths.get(String.valueOf(configPath), "setting.jso").toUri()),
+            Paths.get(String.valueOf(configPath), "setting.json").toUri()),
             Setting.class
     );
-    return setting.getSound().getMicVolume();
+    return (float) setting.getSound().getBgmVolume();
   }
 }

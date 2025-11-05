@@ -1,6 +1,5 @@
 package one.nfolio.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,14 +15,12 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import one.nfolio.rattel.HelloApplication;
 import one.nfolio.util.ConfigResolver;
-import one.nfolio.util.Setting;
+import one.nfolio.util.ExceptionAlert;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.Objects;
 
 
@@ -114,11 +111,13 @@ public class HelloController {
 
           gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
           float lineValue = ConfigResolver.getGain();
+          System.out.println(lineValue);
           gainControl.setValue((float) (20 * Math.log10(lineValue == 0 ? 0.00000000001 : lineValue)) + gainControl.getMaximum());
           clip.loop(Clip.LOOP_CONTINUOUSLY);
           clip.start();
         } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-          throw new RuntimeException(e);
+          ExceptionAlert alert = new ExceptionAlert();
+          alert.show(e);
         }
       });
     });
