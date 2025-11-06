@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -56,10 +58,15 @@ public class HelloController {
   @FXML
   private ImageView backgroundCard3;
 
+  private boolean isSettingShow = false;
+
+  private Parent settingView;
+
   @FXML
   public void initialize() {
     instance = this;
 
+    root.setOpacity(0);
     title.setStyle("-fx-font-family:  \"GN-KMBFont-UB-OldstyleKana\";");
     startButton.setStyle("-fx-font-size: 70px;");
     settingButton.setStyle("-fx-font-size: 70px");
@@ -119,6 +126,17 @@ public class HelloController {
           ExceptionAlert alert = new ExceptionAlert();
           alert.show(e);
         }
+
+        double buttonWidth = root.getPrefWidth() * 0.253125;
+        double buttonHeight = root.getPrefHeight() * 0.15972222;
+        startButton.setPrefWidth(buttonWidth);
+        startButton.setPrefHeight(buttonHeight);
+        settingButton.setPrefWidth(buttonWidth);
+        settingButton.setPrefHeight(buttonHeight);
+        startButton.setLayoutX((root.getPrefWidth() - startButton.getPrefWidth()) / 2);
+        settingButton.setLayoutX((root.getPrefWidth() - settingButton.getPrefWidth()) / 2);
+
+        root.setOpacity(1);
       });
     });
 
@@ -144,8 +162,21 @@ public class HelloController {
 
   @FXML
   public void goSetting() throws IOException {
-    Parent settingView = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("setting.fxml")));
-    root.getChildren().add(settingView);
+    isSettingShow = !isSettingShow;
+    if(isSettingShow) {
+      settingView = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("setting.fxml")));
+      root.getChildren().add(settingView);
+      root.setOnKeyPressed(event -> {
+        if (event.getCode() == KeyCode.ESCAPE) {
+          root.getChildren().remove(settingView);
+          root.setOnKeyPressed(null);
+          isSettingShow = false;
+        }
+      });
+    } else {
+      root.getChildren().remove(settingView);
+      root.setOnKeyPressed(null);
+    }
   }
 
   public static HelloController getInstance() {
