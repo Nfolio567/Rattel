@@ -1,6 +1,7 @@
 package one.nfolio.controller;
 
 import javafx.application.Platform;
+import javafx.beans.binding.DoubleBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -67,8 +68,8 @@ public class HelloController {
 
     root.setOpacity(0);
     title.setStyle("-fx-font-family:  \"GN-KMBFont-UB-OldstyleKana\";");
-    startButton.setStyle("-fx-font-size: 70px;");
-    settingButton.setStyle("-fx-font-size: 70px");
+    startButton.setStyle("-fx-font-size: 5em;");
+    settingButton.setStyle("-fx-font-size: 5em");
 
     Stage stage = HelloApplication.getInstance().getStage();
     final ImageView[] backgroundCards = {backgroundCard0, backgroundCard1, backgroundCard2, backgroundCard3,};
@@ -127,17 +128,21 @@ public class HelloController {
         }
 
         // ボタンのサイズと位置の最適化
-        double buttonWidth = root.getPrefWidth() * 0.253125;
-        double buttonHeight = root.getPrefHeight() * 0.15972222;
-        startButton.setPrefWidth(buttonWidth);
-        startButton.setMaxWidth(buttonWidth);
-        startButton.setPrefHeight(buttonHeight);
-        startButton.setMaxHeight(buttonHeight);
+        DoubleBinding buttonWidth = root.widthProperty().multiply(0.253125);
+        DoubleBinding buttonHeight = root.heightProperty().multiply(0.15972222);
+        startButton.prefWidthProperty().bind(buttonWidth);
+        startButton.maxWidthProperty().bind(buttonWidth);
+        startButton.minWidthProperty().bind(buttonWidth);
+        startButton.prefHeightProperty().bind(buttonHeight);
+        startButton.maxHeightProperty().bind(buttonHeight);
+        startButton.minHeightProperty().bind(buttonHeight);
 
-        settingButton.setPrefWidth(buttonWidth);
-        settingButton.setMaxWidth(buttonWidth);
-        settingButton.setPrefHeight(buttonHeight);
-        settingButton.setMaxHeight(buttonHeight);
+        settingButton.prefWidthProperty().bind(buttonWidth);
+        settingButton.maxWidthProperty().bind(buttonWidth);
+        settingButton.minWidthProperty().bind(buttonWidth);
+        settingButton.prefHeightProperty().bind(buttonHeight);
+        settingButton.maxHeightProperty().bind(buttonHeight);
+        settingButton.minHeightProperty().bind(buttonHeight);
 
         startButton.setLayoutX((root.getPrefWidth() - startButton.getPrefWidth()) / 2);
         settingButton.setLayoutX((root.getPrefWidth() - settingButton.getPrefWidth()) / 2);
