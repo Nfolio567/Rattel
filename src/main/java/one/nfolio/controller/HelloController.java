@@ -130,13 +130,22 @@ public class HelloController {
         double buttonWidth = root.getPrefWidth() * 0.253125;
         double buttonHeight = root.getPrefHeight() * 0.15972222;
         startButton.setPrefWidth(buttonWidth);
+        startButton.setMaxWidth(buttonWidth);
         startButton.setPrefHeight(buttonHeight);
+        startButton.setMaxHeight(buttonHeight);
+
         settingButton.setPrefWidth(buttonWidth);
+        settingButton.setMaxWidth(buttonWidth);
         settingButton.setPrefHeight(buttonHeight);
+        settingButton.setMaxHeight(buttonHeight);
+
         startButton.setLayoutX((root.getPrefWidth() - startButton.getPrefWidth()) / 2);
         settingButton.setLayoutX((root.getPrefWidth() - settingButton.getPrefWidth()) / 2);
 
         root.setOpacity(1);
+
+        System.out.printf("prefW: %f, calculationW: %f, prefH: %f, calculationH: %f\n", startButton.getPrefWidth(), startButton.getWidth(), startButton.getPrefHeight(), startButton.getHeight());
+        System.out.printf("vWindowW: %f, vWindowH: %f\n", root.getWidth(), root.getHeight());
       });
     });
 
