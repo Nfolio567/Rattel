@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -119,7 +118,7 @@ public class HelloController {
           gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
           float lineValue = ConfigResolver.getGain();
           System.out.println(lineValue);
-          gainControl.setValue((float) (20 * Math.log10(lineValue == 0 ? 0.00000000001 : lineValue)) + gainControl.getMaximum());
+          gainControl.setValue((float) (20 * Math.log10(lineValue == 0 ? 0.0001 : lineValue)) + gainControl.getMaximum());
           clip.loop(Clip.LOOP_CONTINUOUSLY);
           clip.start();
         } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
@@ -127,6 +126,7 @@ public class HelloController {
           alert.show(e);
         }
 
+        // ボタンのサイズと位置の最適化
         double buttonWidth = root.getPrefWidth() * 0.253125;
         double buttonHeight = root.getPrefHeight() * 0.15972222;
         startButton.setPrefWidth(buttonWidth);
