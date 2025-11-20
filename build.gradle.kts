@@ -46,6 +46,8 @@ dependencies {
   // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
   implementation("com.fasterxml.jackson.core:jackson-databind:2.20.1")
   implementation("com.fasterxml.jackson.core:jackson-annotations:2.20")
+  // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+  implementation("com.squareup.okhttp3:okhttp:5.3.1")
 }
 
 tasks.withType<Test> {

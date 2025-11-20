@@ -148,9 +148,6 @@ public class HelloController {
         settingButton.setLayoutX((root.getPrefWidth() - settingButton.getPrefWidth()) / 2);
 
         root.setOpacity(1);
-
-        System.out.printf("prefW: %f, calculationW: %f, prefH: %f, calculationH: %f\n", startButton.getPrefWidth(), startButton.getWidth(), startButton.getPrefHeight(), startButton.getHeight());
-        System.out.printf("vWindowW: %f, vWindowH: %f\n", root.getWidth(), root.getHeight());
       });
     });
 
@@ -170,8 +167,15 @@ public class HelloController {
   }
 
   @FXML
-  public void onStartRecording() {
-
+  public void onStart() throws IOException {
+    Parent view = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("prepareRoom.fxml")));
+    root.getChildren().add(view);
+    root.setOnKeyPressed(event -> {
+      if(event.getCode() == KeyCode.ESCAPE) {
+        root.getChildren().remove(view);
+        root.setOnKeyPressed(null);
+      }
+    });
   }
 
   @FXML

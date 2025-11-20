@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="superRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="superRoot" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="one.nfolio.controller.PrepareRoomController">
+   <children>
+      <Pane fx:id="root" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TextField layoutX="105.0" layoutY="107.0" prefHeight="59.0" prefWidth="390.0" promptText="ルーム名" style="-fx-font-size: 40px;">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </TextField>
+            <Button layoutX="204.0" layoutY="189.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="192.0" text="参加" />
+            <Button layoutX="205.0" layoutY="304.0" mnemonicParsing="false" onAction="#onClickCreateRoom" prefHeight="59.0" prefWidth="192.0" text="ルームを作成" />
+            <Text fill="WHITE" layoutX="120.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ルームに参加" wrappingWidth="361.0">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="271.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="または" wrappingWidth="60.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</Pane>

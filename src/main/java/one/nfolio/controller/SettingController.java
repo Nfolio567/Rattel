@@ -33,8 +33,7 @@ public class SettingController {
 
   public void initialize() {
     superRoot.setOpacity(0);
-    superRoot.setLayoutY(0);
-    superRoot.setLayoutX(0);
+
     Platform.runLater(() -> {
       AnchorPane parentNode = (AnchorPane) superRoot.getParent();
       superRoot.setPrefWidth(parentNode.getPrefWidth() / 2);

@@ -20,7 +20,7 @@
                   <Font size="300.0" />
                </font>
             </Text>
-            <Button fx:id="startButton" layoutX="438.0" layoutY="453.0" mnemonicParsing="false" onAction="#onStartRecording" prefHeight="115.0" prefWidth="324.0" text="始める" textAlignment="CENTER" />
+            <Button fx:id="startButton" layoutX="438.0" layoutY="453.0" mnemonicParsing="false" onAction="#onStart" prefHeight="115.0" prefWidth="324.0" text="始める" textAlignment="CENTER" />
             <Button fx:id="settingButton" layoutX="438.0" layoutY="588.0" mnemonicParsing="false" onAction="#goSetting" prefHeight="115.0" prefWidth="324.0" text="設定" textAlignment="CENTER" />
          </children>
       </AnchorPane>
