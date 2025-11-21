@@ -5,7 +5,10 @@
   },
   "sound": {
     "bgm-volume": 1,
+    "effects-volume": 1,
     "mic-volume": 1,
     "mute": false
-  }
+  },
+  "user-name": null,
+  "jwt-token": ""
 }

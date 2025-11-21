@@ -15,9 +15,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import lombok.Getter;
 import one.nfolio.rattel.HelloApplication;
 import one.nfolio.util.ConfigResolver;
 import one.nfolio.util.ExceptionAlert;
+import one.nfolio.util.SoundConfig;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
@@ -27,10 +29,6 @@ import java.util.Objects;
 
 
 public class HelloController {
-  private static HelloController instance;
-
-  private static FloatControl gainControl;
-
   @FXML
   private Pane superRoot;
 
@@ -64,8 +62,6 @@ public class HelloController {
 
   @FXML
   public void initialize() {
-    instance = this;
-
     root.setOpacity(0);
     title.setStyle("-fx-font-family:  \"GN-KMBFont-UB-OldstyleKana\";");
     startButton.setStyle("-fx-font-size: 5em;");
@@ -111,21 +107,7 @@ public class HelloController {
         double titleBar = stage.getHeight() - superRoot.getHeight();
         root.setLayoutY(((stage.getHeight() - titleBar) - root.getHeight()) / 2); // 仮想ウィンドウを中心へ
 
-        try { // 以下、bgm処理
-          Clip clip = AudioSystem.getClip();
-          InputStream rawBGM = Objects.requireNonNull(getClass().getResourceAsStream("/media/bgm.wav"));
-          clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(rawBGM)));
-
-          gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-          float lineValue = ConfigResolver.getGain();
-          System.out.println(lineValue);
-          gainControl.setValue((float) (20 * Math.log10(lineValue == 0 ? 0.0001 : lineValue)) + gainControl.getMaximum());
-          clip.loop(Clip.LOOP_CONTINUOUSLY);
-          clip.start();
-        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-          ExceptionAlert alert = new ExceptionAlert();
-          alert.show(e);
-        }
+        SoundConfig.startBGM();
 
         // ボタンのサイズと位置の最適化
         DoubleBinding buttonWidth = root.widthProperty().multiply(0.253125);
@@ -168,6 +150,7 @@ public class HelloController {
 
   @FXML
   public void onStart() throws IOException {
+    SoundConfig.clickButton();
     Parent view = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("prepareRoom.fxml")));
     root.getChildren().add(view);
     root.setOnKeyPressed(event -> {
@@ -195,13 +178,5 @@ public class HelloController {
       root.getChildren().remove(settingView);
       root.setOnKeyPressed(null);
     }
-  }
-
-  public static HelloController getInstance() {
-    return instance;
-  }
-
-  public FloatControl getGainControl() {
-    return gainControl;
   }
 }

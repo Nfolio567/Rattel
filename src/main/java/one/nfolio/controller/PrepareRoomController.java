@@ -1,17 +1,19 @@
 package one.nfolio.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import one.nfolio.rattel.HelloApplication;
+import one.nfolio.util.ConfigResolver;
+import one.nfolio.util.ExceptionAlert;
+import one.nfolio.pojo.Setting;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
+import java.nio.file.Paths;
 
 public class PrepareRoomController {
   @FXML
@@ -23,6 +25,40 @@ public class PrepareRoomController {
   @FXML
   public void initialize() {
     superRoot.setOpacity(0);
+    ObjectMapper mapper = new ObjectMapper();
+    try {
+      Setting setting = mapper.readValue(new File(Paths.get(String.valueOf(ConfigResolver.getConfigPath()), "setting.json").toUri()), Setting.class);
+      if(setting.getUserName() == null) {
+        superRoot.getChildren().remove(root);
+
+        Text text = new Text("(新規)ユーザー名を入力");
+        text.setLayoutX(32);
+        text.setLayoutY(103);
+        text.setStyle("-fx-font-size: 50px; -fx-fill: #fff;");
+
+        TextField field = new TextField();
+        field.setPromptText("ユーザー名");
+        field.setLayoutX(105);
+        field.setLayoutY(150);
+        field.setPrefWidth(390);
+        field.setPrefHeight(59);
+        field.setStyle("-fx-font-size: 40px");
+
+        Button button = new Button("確定");
+        button.setLayoutX(204);
+        button.setLayoutY(300);
+        button.setPrefWidth(192);
+        button.setPrefHeight(59);
+
+        superRoot.getChildren().add(text);
+        superRoot.getChildren().add(field);
+        superRoot.getChildren().add(button);
+      }
+    } catch (IOException e) {
+      ExceptionAlert alert = new ExceptionAlert();
+      alert.show(e);
+    }
+
     Platform.runLater(() -> {
       Pane parent = (Pane) superRoot.getParent();
       superRoot.setLayoutX((parent.getPrefWidth() - superRoot.getPrefWidth()) / 2);
@@ -36,35 +72,25 @@ public class PrepareRoomController {
     superRoot.getChildren().remove(root);
     Text text = new Text("ルームを作成");
     text.setLayoutX(120);
-    text.setLayoutY(78);
+    text.setLayoutY(103);
     text.setStyle("-fx-font-size: 60px; -fx-fill: #fff;");
 
-    TextField roomNameField = new TextField();
-    roomNameField.setPromptText("ルーム名");
-    roomNameField.setLayoutX(105);
-    roomNameField.setLayoutY(109);
-    roomNameField.setPrefWidth(390);
-    roomNameField.setPrefHeight(59);
-    roomNameField.setStyle("-fx-font-size: 40px");
-
-    TextField userNameField = new TextField();
-    userNameField.setPromptText("ユーザー名");
-    userNameField.setLayoutX(105);
-    userNameField.setLayoutY(207);
-    userNameField.setPrefWidth(390);
-    userNameField.setPrefHeight(59);
-    userNameField.setStyle("-fx-font-size: 40px");
-
+    TextField field = new TextField();
+    field.setPromptText("ルーム名");
+    field.setLayoutX(105);
+    field.setLayoutY(150);
+    field.setPrefWidth(390);
+    field.setPrefHeight(59);
+    field.setStyle("-fx-font-size: 40px");
 
     Button button = new Button("作成");
     button.setLayoutX(204);
-    button.setLayoutY(310);
+    button.setLayoutY(300);
     button.setPrefWidth(192);
     button.setPrefHeight(59);
 
     superRoot.getChildren().add(text);
-    superRoot.getChildren().add(roomNameField);
-    superRoot.getChildren().add(userNameField);
+    superRoot.getChildren().add(field);
     superRoot.getChildren().add(button);
   }
 }

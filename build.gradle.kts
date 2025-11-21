@@ -48,6 +48,11 @@ dependencies {
   implementation("com.fasterxml.jackson.core:jackson-annotations:2.20")
   // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
   implementation("com.squareup.okhttp3:okhttp:5.3.1")
+  // https://mvnrepository.com/artifact/org.projectlombok/lombok
+  implementation("org.projectlombok:lombok:1.18.42")
+  annotationProcessor("org.projectlombok:lombok:1.18.42")
+  // https://mvnrepository.com/artifact/com.github.javakeyring/java-keyring
+  implementation("com.github.javakeyring:java-keyring:1.0.4")
 }
 
 tasks.withType<Test> {

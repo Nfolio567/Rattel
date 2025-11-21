@@ -3,16 +3,15 @@ package one.nfolio.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Separator;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
 
 import one.nfolio.util.ConfigResolver;
 import one.nfolio.util.ExceptionAlert;
-import one.nfolio.util.Setting;
+import one.nfolio.pojo.Setting;
+import one.nfolio.util.SoundConfig;
 
-import javax.sound.sampled.FloatControl;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -48,20 +47,17 @@ public class SettingController {
       micVolume.setLayoutX((superRoot.getPrefWidth()-micVolume.getWidth()) / 2);
 
       try {
-        bgmVolume.setValue(ConfigResolver.getGain());
+        bgmVolume.setValue(ConfigResolver.getBgmGain());
       } catch (IOException e) {
         ExceptionAlert alert = new ExceptionAlert();
         alert.show(e);
       }
 
       superRoot.setOpacity(1);
-      System.out.printf("ParentW: %f, ParentH: %f, rootW: %f, rootH: %f", parentNode.getWidth(), parentNode.getHeight(), superRoot.getWidth(), superRoot.getHeight());
-      System.out.printf("X: %f, Y: %f\n", superRoot.getLayoutX(), superRoot.getLayoutY());
     });
 
     bgmVolume.valueProperty().addListener((_, _, newValue) -> {
-      FloatControl gainControl = HelloController.getInstance().getGainControl();
-      gainControl.setValue((float) (20 * Math.log10((double) newValue == 0 ? 0.0001 : (double) newValue)) + gainControl.getMaximum());
+      SoundConfig.setBgmGain((float) (20 * Math.log10((double) newValue == 0 ? 0.0001 : (double) newValue)));
       ObjectMapper mapper = new ObjectMapper();
       try {
         Setting setting = mapper.readValue(new File(Paths.get(String.valueOf(ConfigResolver.getConfigPath()), "setting.json").toUri()), Setting.class);
@@ -71,7 +67,6 @@ public class SettingController {
         ExceptionAlert alert = new ExceptionAlert();
         alert.show(e);
       }
-
     });
 
   }

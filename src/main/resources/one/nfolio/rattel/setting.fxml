@@ -20,6 +20,8 @@
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="BGM：ボリューム" />
             <Slider fx:id="bgmVolume" blockIncrement="0.1" max="1.0" />
+            <Text fill="WHITE" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="効果音：ボリューム" />
+            <Slider fx:id="effectsVolume" blockIncrement="0.1" layoutX="10.0" layoutY="23.0" max="1.0" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="マイク：ボリューム" />
             <Slider fx:id="micVolume" blockIncrement="0.1" max="1.0" />
             <CheckBox mnemonicParsing="false" prefHeight="29.0" prefWidth="146.0" text="ミュート" textFill="WHITE" />

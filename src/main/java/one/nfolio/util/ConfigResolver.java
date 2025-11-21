@@ -1,6 +1,7 @@
 package one.nfolio.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import one.nfolio.pojo.Setting;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +12,10 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 public class ConfigResolver {
-  private static Path configPath;
   public static Path getConfigPath() throws IOException {
     String os = System.getProperty("os.name").toLowerCase();
 
+    Path configPath;
     if(os.contains("win")) {
       configPath = Paths.get(System.getenv("APPDATA"), "Rattel");
     } else if(os.contains("mac")) {
@@ -40,14 +41,23 @@ public class ConfigResolver {
     return configPath;
   }
 
-  public static float getGain() throws IOException {
-    configPath = getConfigPath();
-    System.out.println(configPath);
+  private static Setting getSetting() throws IOException {
+    Path configDir = getConfigPath();
+    System.out.println(configDir);
     ObjectMapper mapper = new ObjectMapper();
-    Setting setting = mapper.readValue(new File(
-            Paths.get(String.valueOf(configPath), "setting.json").toUri()),
+    return mapper.readValue(new File(
+                    Paths.get(String.valueOf(configDir), "setting.json").toUri()),
             Setting.class
     );
+  }
+
+  public static float getBgmGain() throws IOException {
+    Setting setting = getSetting();
     return (float) setting.getSound().getBgmVolume();
+  }
+
+  public static float getEffectsGain() throws IOException {
+    Setting setting = getSetting();
+    return (float) setting.getSound().getEffectsVolume();
   }
 }
