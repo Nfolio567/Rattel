@@ -9,16 +9,21 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(0, 0, 0, 0);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="roomName" layoutX="105.0" layoutY="150.0" prefHeight="59.0" prefWidth="390.0" style="-fx-font-size: 40px;">
+      <TextField fx:id="roomName" layoutX="105.0" layoutY="109.0" prefHeight="59.0" prefWidth="390.0" style="-fx-font-size: 40px;">
          <font>
             <Font size="40.0" />
          </font>
       </TextField>
-      <Text fill="WHITE" layoutX="120.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ルームを作成" wrappingWidth="361.0">
+      <Text fill="WHITE" layoutX="120.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ルームを作成" wrappingWidth="361.0">
          <font>
             <Font size="60.0" />
          </font>
       </Text>
-      <Button fx:id="create" layoutX="204.0" layoutY="300.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="192.0" text="作成" />
+      <Button fx:id="create" layoutX="204.0" layoutY="310.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="192.0" text="作成" />
+      <TextField fx:id="userName" layoutX="106.0" layoutY="207.0" prefHeight="59.0" prefWidth="390.0" style="-fx-font-size: 40px;">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </TextField>
    </children>
 </Pane>

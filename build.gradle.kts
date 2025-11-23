@@ -29,7 +29,8 @@ application {
   mainModule.set("one.nfolio.rattel")
   mainClass.set("one.nfolio.rattel.HelloApplication")
   applicationDefaultJvmArgs = listOf(
-    "--enable-native-access=javafx.graphics"
+    "--enable-native-access=javafx.graphics",
+    "--enable-native-access=jkeychain"
   )
 }
 
@@ -53,6 +54,12 @@ dependencies {
   annotationProcessor("org.projectlombok:lombok:1.18.42")
   // https://mvnrepository.com/artifact/com.github.javakeyring/java-keyring
   implementation("com.github.javakeyring:java-keyring:1.0.4")
+  // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+  implementation("ch.qos.logback:logback-core:1.5.21")
+  // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+  implementation("ch.qos.logback:logback-classic:1.5.21")
+  // https://mvnrepository.com/artifact/com.guicedee.services/slf4j
+  implementation("com.guicedee.services:slf4j:1.2.2.1")
 }
 
 tasks.withType<Test> {

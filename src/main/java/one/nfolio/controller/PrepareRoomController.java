@@ -1,12 +1,15 @@
 package one.nfolio.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.github.javakeyring.Keyring;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+
 import one.nfolio.util.ConfigResolver;
 import one.nfolio.util.ExceptionAlert;
 import one.nfolio.pojo.Setting;
@@ -44,15 +47,18 @@ public class PrepareRoomController {
         field.setPrefHeight(59);
         field.setStyle("-fx-font-size: 40px");
 
-        Button button = new Button("確定");
-        button.setLayoutX(204);
-        button.setLayoutY(300);
-        button.setPrefWidth(192);
-        button.setPrefHeight(59);
+        Button done = new Button("確定");
+        done.setLayoutX(204);
+        done.setLayoutY(300);
+        done.setPrefWidth(192);
+        done.setPrefHeight(59);
+        done.setOnAction(event -> {
+
+        });
 
         superRoot.getChildren().add(text);
         superRoot.getChildren().add(field);
-        superRoot.getChildren().add(button);
+        superRoot.getChildren().add(done);
       }
     } catch (IOException e) {
       ExceptionAlert alert = new ExceptionAlert();

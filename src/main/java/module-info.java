@@ -6,6 +6,9 @@ module one.nfolio.rattel {
   requires com.fasterxml.jackson.annotation;
   requires com.fasterxml.jackson.databind;
   requires static lombok;
+  requires java.keyring;
+  requires okhttp3;
+  requires org.slf4j;
 
   opens one.nfolio.rattel to javafx.fxml;
   opens one.nfolio.controller to javafx.fxml;
